@@ -2,6 +2,8 @@
 
 (function() {
 
+  var utsuroi;
+
   var clock = new THREE.Clock();
 
   var scene = new THREE.Scene();
@@ -22,18 +24,22 @@
   var loader = new THREE.JSONLoader();
   loader.load('assets/zensuke.json', createActor);
   function createActor(geometry, materials) {
-    var actor = new THREE.SkinnedMesh(
-      geometry,
-      new THREE.MultiMaterial(materials),
-      false
-    );
+    var material = new THREE.MultiMaterial(materials);
+    var actor = new THREE.SkinnedMesh(geometry, material);
     scene.add(actor);
+
+    var mixer = new THREE.AnimationMixer(actor);
+    utsuroi = new Utsuroi(mixer);
+    utsuroi.play();
   }
 
   tick();
   function tick() {
     requestAnimationFrame(tick);
-    var delta = clock.getDelta();
+    if(utsuroi) {
+      var delta = clock.getDelta();
+      utsuroi.update(delta);
+    }
     renderer.render(scene, camera);
   }
 })();
