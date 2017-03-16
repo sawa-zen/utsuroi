@@ -1,20 +1,31 @@
 {
   "name": "Utsuroi",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is a plug-in for easy switching animation of 3D models of Three.js.",
+  "main": "build/utsuroi.js",
   "scripts": {
-    "eslint": "eslint"
+    "start": "npm run watch & npm run lite",
+    "lite": "lite-server",
+    "build:production": "browserify src/Utsuroi.js --standalone Utsuroi -t babelify -p licensify | derequire > build/utsuroi.js",
+    "build:develop": "browserify src/Utsuroi.js --standalone Utsuroi -t babelify -d -p licensify | derequire > build/utsuroi.js",
+    "minify": "uglifyjs build/utsuroi.js --mangle --compress --comments --output build/utsuroi.min.js",
+    "watch": "watch 'npm run build:develop' src/ --ignoreDotFiles",
+    "versionup": "versionup -p './' -l 'micro' -a '1'",
+    "release": "npm run build:production && npm run minify && npm run versionup && npm publish"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sawa-zen/three-animation-switcher.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "sawa-zen",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sawa-zen/three-animation-switcher/issues"
   },
+  "keywords": [
+    "three.js",
+    "AnimationMixer"
+  ],
   "homepage": "https://github.com/sawa-zen/three-animation-switcher#readme",
   "devDependencies": {
     "babel": "^6.23.0",
@@ -24,11 +35,14 @@
     "babel-preset-es2015": "^6.24.0",
     "babelify": "^7.3.0",
     "browserify": "^13.3.0",
+    "derequire": "^2.0.6",
     "eslint": "^3.17.1",
+    "licensify": "^3.1.2",
+    "lite-server": "^2.3.0",
     "lodash": "^4.17.4",
-    "moment": "^2.17.1",
     "three": "^0.84.0",
-    "watch": "^0.17.1",
-    "watchify": "^3.9.0"
+    "uglify-js": "^2.8.12",
+    "versionup": "^2.1.2",
+    "watch": "^0.17.1"
   }
 }
