@@ -24,6 +24,9 @@
   var loader = new THREE.JSONLoader();
   loader.load('assets/zensuke.json', createActor);
   function createActor(geometry, materials) {
+    materials.forEach(function(m) {
+      m.skinning = true;
+    });
     var material = new THREE.MultiMaterial(materials);
     var actor = new THREE.SkinnedMesh(geometry, material);
     scene.add(actor);

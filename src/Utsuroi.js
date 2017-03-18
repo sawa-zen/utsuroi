@@ -1,8 +1,12 @@
+import {_} from 'lodash';
+import Action from './Action';
+
 module.exports = class Utsuroi {
 
   _mixer = null;
   _root = null;
   _animationEnabled = false;
+  _actions = [];
 
   /**
    * @constructor
@@ -11,7 +15,11 @@ module.exports = class Utsuroi {
     this._mixer = mixer;
     this._root = mixer.getRoot();
 
-    console.info(this._root.geometry.animations);
+    this._actions = _.map(this._root.geometry.animations, (animation) => {
+      return new Action(this._mixer.clipAction(animation));
+    });
+
+    this._actions[3].play();
   }
 
   /**
@@ -34,6 +42,7 @@ module.exports = class Utsuroi {
    */
   update(delta) {
     if(!this._animationEnabled) return;
+    console.info(delta);
     this._mixer.update(delta);
   }
 }
