@@ -2,6 +2,10 @@ export default class Action {
 
   _actionData = null;
 
+  /** motion name */
+  _name = null;
+  get name() { return this._name; }
+
   /** motion weight */
   _weight = 0;
   get weight() { return this._weight; }
@@ -19,14 +23,15 @@ export default class Action {
   /**
    * @constructor
    */
-  constructor(actionData) {
+  constructor(name, actionData) {
     this._actionData = actionData;
     this._actionData.setEffectiveWeight(1);
+
+    console.info(actionData);
   }
 
   play() {
     this._actionData.play();
-    console.info('play');
   }
 
   reset() {

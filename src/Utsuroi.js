@@ -16,7 +16,10 @@ module.exports = class Utsuroi {
     this._root = mixer.getRoot();
 
     this._actions = _.map(this._root.geometry.animations, (animation) => {
-      return new Action(this._mixer.clipAction(animation));
+      let name = animation.name;
+      let action = this._mixer.clipAction(animation);
+      console.info(name);
+      return new Action(name, this._mixer.clipAction(animation));
     });
 
     this._actions[3].play();
@@ -42,7 +45,6 @@ module.exports = class Utsuroi {
    */
   update(delta) {
     if(!this._animationEnabled) return;
-    console.info(delta);
     this._mixer.update(delta);
   }
 }
