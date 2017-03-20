@@ -8,5 +8,6 @@
   "files": [
     "./demo/**/*.{html,htm,css,js}",
     "./build/utsuroi.js"
-  ]
+  ],
+  "reloadDebounce": 2000
 }
