@@ -32,7 +32,12 @@
     scene.add(actor);
 
     var mixer = new THREE.AnimationMixer(actor);
-    utsuroi = new Utsuroi(mixer);
+    utsuroi = new Utsuroi(mixer, [
+      {name: "Rest Pose", loop: true},
+      {name: "Walk", loop: true},
+      {name: "Jump"},
+      {name: "Attack"}
+    ], "Rest Pose");
     utsuroi.play();
   }
 

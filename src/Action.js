@@ -26,7 +26,6 @@ export default class Action {
   constructor(name, actionData) {
     this._actionData = actionData;
     this._actionData.setEffectiveWeight(1);
-
     console.info(actionData);
   }
 
