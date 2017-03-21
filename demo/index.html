@@ -14,9 +14,36 @@
     canvas {
       vertical-align: bottom;
     }
+
+    .poseList {
+      position: absolute;
+      width: 100%;
+      bottom: 10px;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      justify-content: center;
+    }
+
+    .poseList li {
+      display: block;
+      color: #FFF;
+      border: 1px #FFF solid;
+      padding: 10px;
+      text-align: center;
+      min-width: 100px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <ul class="poseList">
+    <li id="rest">Rest Pose</li>
+    <li id="walk">Walk</li>
+    <li id="jump">Jump</li>
+    <li id="attack">Attack</li>
+  </ul>
   <script src="./js/sample.js"></script>
 </body>
 </html>
