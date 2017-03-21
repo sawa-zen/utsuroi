@@ -62,12 +62,6 @@
       return;
     }
 
-    switch(target.dataset.action) {
-      case "rest": utsuroi.to("Rest Pose"); break;
-      case "walk": utsuroi.to("Walk"); break;
-      case "jump": utsuroi.to("Jump"); break;
-      case "fall": utsuroi.to("Fall"); break;
-      case "attack": utsuroi.to("Attack"); break;
-    }
+    utsuroi.to(target.dataset.action);
   }
 })();
