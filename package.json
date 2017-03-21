@@ -38,6 +38,7 @@
     "licensify": "^3.1.2",
     "lite-server": "^2.3.0",
     "lodash": "^4.17.4",
+    "tween.js": "^16.6.0",
     "uglify-js": "^2.8.12",
     "versionup": "^2.1.2",
     "watch": "^0.17.1"
