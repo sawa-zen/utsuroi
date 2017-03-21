@@ -11,6 +11,7 @@ module.exports = class Utsuroi {
   _root = null;
   _animationEnabled = false;
   _actions = [];
+  _currentAction = null;
 
   /**
    * @constructor
@@ -30,21 +31,27 @@ module.exports = class Utsuroi {
       }
 
       let action = this._mixer.clipAction(actionData);
-      return new Action(name, action);
+      return new Action(action, actionConfig);
     });
-
-    this._actions[0].play();
   }
 
-  to(actionName, duration = 300) {
-    console.info("to");
+  to(actionName, duration = 70) {
+    let oldAction = this._currentAction;
+    let newAction = this._findAction(actionName);
+    newAction.reset();
+    newAction.play();
     let param = { weight: 0 };
     let tween = new TWEEN.Tween(param)
       .to({ weight: 1 }, duration)
       .onUpdate(function() {
+        if(oldAction) {
+          oldAction.weight = 1 - this.weight;
+        }
+        newAction.weight = this.weight;
         console.info(this.weight);
       })
       .start();
+    this._currentAction = newAction;
   }
 
   play() {
@@ -59,5 +66,11 @@ module.exports = class Utsuroi {
     if(!this._animationEnabled) return;
     this._mixer.update(delta);
     TWEEN.update();
+  }
+
+  _findAction(name) {
+    return _.find(this._actions, (action) => {
+      return action.name === name;
+    });
   }
 }

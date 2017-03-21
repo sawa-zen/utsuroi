@@ -39,6 +39,7 @@
       {name: "Rest Pose", loop: true},
       {name: "Walk", loop: true},
       {name: "Jump"},
+      {name: "Fall"},
       {name: "Attack"}
     ], "Rest Pose");
     utsuroi.play();
@@ -56,6 +57,7 @@
 
   function onClickButtons(event) {
     var target = event.target;
+    console.info(target.dataset.action);
     if(!target.dataset.action) {
       return;
     }
@@ -63,8 +65,9 @@
     switch(target.dataset.action) {
       case "rest": utsuroi.to("Rest Pose"); break;
       case "walk": utsuroi.to("Walk"); break;
-      case "Jump": utsuroi.to("Jump"); break;
-      case "Attack": utsuroi.to("Attack"); break;
+      case "jump": utsuroi.to("Jump"); break;
+      case "fall": utsuroi.to("Fall"); break;
+      case "attack": utsuroi.to("Attack"); break;
     }
   }
 })();

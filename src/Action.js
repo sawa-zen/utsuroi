@@ -13,6 +13,7 @@ export default class Action {
     if (val < 0) val = 0;
     if (1 < val) val = 1;
     this._weight = val;
+    this._actionData.setEffectiveWeight(val);
   }
 
   /** playing flag */
@@ -23,10 +24,15 @@ export default class Action {
   /**
    * @constructor
    */
-  constructor(name, actionData) {
+  constructor(actionData, config) {
+    this._name = config.name;
     this._actionData = actionData;
-    this._actionData.setEffectiveWeight(1);
-    console.info(actionData);
+    this._actionData.setEffectiveWeight(0);
+
+    if(!config.loop) {
+      this._actionData.setLoop(THREE.LoopOnce, 0);
+      this._actionData.clampWhenFinished = true;
+    }
   }
 
   play() {
@@ -34,5 +40,6 @@ export default class Action {
   }
 
   reset() {
+    this._actionData.reset();
   }
 }
