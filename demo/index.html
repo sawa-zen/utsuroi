@@ -15,7 +15,7 @@
       vertical-align: bottom;
     }
 
-    .poseList {
+    #buttonList {
       position: absolute;
       width: 100%;
       bottom: 10px;
@@ -25,7 +25,7 @@
       justify-content: center;
     }
 
-    .poseList li {
+    #buttonList li {
       display: block;
       color: #FFF;
       border: 1px #FFF solid;
@@ -38,11 +38,11 @@
   </style>
 </head>
 <body>
-  <ul class="poseList">
-    <li id="rest">Rest Pose</li>
-    <li id="walk">Walk</li>
-    <li id="jump">Jump</li>
-    <li id="attack">Attack</li>
+  <ul id="buttonList">
+    <li data-action="rest">Rest Pose</li>
+    <li data-action="walk">Walk</li>
+    <li data-action="jump">Jump</li>
+    <li data-action="attack">Attack</li>
   </ul>
   <script src="./js/sample.js"></script>
 </body>

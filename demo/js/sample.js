@@ -3,6 +3,9 @@
 (function() {
 
   var utsuroi;
+  var buttonList = document.getElementById('buttonList');
+  buttonList.addEventListener('click', onClickButtons);
+  console.info(buttonList);
 
   var clock = new THREE.Clock();
 
@@ -49,5 +52,19 @@
       utsuroi.update(delta);
     }
     renderer.render(scene, camera);
+  }
+
+  function onClickButtons(event) {
+    var target = event.target;
+    if(!target.dataset.action) {
+      return;
+    }
+
+    switch(target.dataset.action) {
+      case "rest": utsuroi.to("Rest Pose"); break;
+      case "walk": utsuroi.to("Walk"); break;
+      case "Jump": utsuroi.to("Jump"); break;
+      case "Attack": utsuroi.to("Attack"); break;
+    }
   }
 })();
