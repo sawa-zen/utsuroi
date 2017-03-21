@@ -35,11 +35,14 @@ module.exports = class Utsuroi {
     });
   }
 
-  to(actionName, duration = 70) {
+  to(actionName, duration) {
     let oldAction = this._currentAction;
     let newAction = this._findAction(actionName);
+
     newAction.reset();
     newAction.play();
+
+    duration = duration || newAction.duration;
     let param = { weight: 0 };
     let tween = new TWEEN.Tween(param)
       .to({ weight: 1 }, duration)
@@ -48,7 +51,6 @@ module.exports = class Utsuroi {
           oldAction.weight = 1 - this.weight;
         }
         newAction.weight = this.weight;
-        console.info(this.weight);
       })
       .start();
     this._currentAction = newAction;

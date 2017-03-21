@@ -6,6 +6,9 @@ export default class Action {
   _name = null;
   get name() { return this._name; }
 
+  _dulation = 300;
+  get duration() { return this._duration; }
+
   /** motion weight */
   _weight = 0;
   get weight() { return this._weight; }
@@ -26,6 +29,7 @@ export default class Action {
    */
   constructor(actionData, config) {
     this._name = config.name;
+    this._duration = config.duration || 300;
     this._actionData = actionData;
     this._actionData.setEffectiveWeight(0);
 
