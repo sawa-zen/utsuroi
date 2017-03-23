@@ -5,7 +5,6 @@
   var utsuroi;
   var buttonList = document.getElementById('buttonList');
   buttonList.addEventListener('click', onClickButtons);
-  console.info(buttonList);
 
   var clock = new THREE.Clock();
 
@@ -38,7 +37,7 @@
     utsuroi = new Utsuroi(mixer, [
       {name: "Rest Pose", loop: true},
       {name: "Walk", loop: true},
-      {name: "Jump", to: "Fall"},
+      {name: "Jump", to: "Fall", duration: 100},
       {name: "Fall"},
       {name: "Attack", duration: 70}
     ], "Rest Pose");
@@ -57,7 +56,6 @@
 
   function onClickButtons(event) {
     var target = event.target;
-    console.info(target.dataset.action);
     if(!target.dataset.action) {
       return;
     }
