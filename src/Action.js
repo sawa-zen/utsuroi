@@ -19,11 +19,6 @@ export default class Action {
     this._actionData.setEffectiveWeight(val);
   }
 
-  /** playing flag */
-  _isPlaying = false;
-  get isPlaying() { return this._isPlaying; }
-  set isPlaying(flg) { this._isPlaying = flg; }
-
   /**
    * @constructor
    */
