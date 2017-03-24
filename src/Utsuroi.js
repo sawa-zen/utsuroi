@@ -1,11 +1,12 @@
 import {_} from 'lodash';
 import TWEEN from 'tween.js';
+import EventEmitter from 'eventemitter3';
 import Action from './Action';
 
 /**
  * Utsuroi
  */
-module.exports = class Utsuroi {
+module.exports = class Utsuroi extends EventEmitter {
 
   _mixer = null;
   _root = null;
@@ -17,6 +18,8 @@ module.exports = class Utsuroi {
    * @constructor
    */
   constructor(mixer, actionConfigs) {
+    super();
+
     this._mixer = mixer;
     this._root = mixer.getRoot();
 
