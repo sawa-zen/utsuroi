@@ -41,6 +41,9 @@
       {name: "Fall"},
       {name: "Attack", duration: 70}
     ], "Rest Pose");
+    utsuroi.on('changeStart', function(event) {
+      console.info('changeStart:', event);
+    });
     utsuroi.on('changeComplete', function(event) {
       console.info('changeComplete:', event);
     });

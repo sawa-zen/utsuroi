@@ -14,6 +14,10 @@ module.exports = class Utsuroi extends EventEmitter {
   _actions = [];
   _currentAction = null;
 
+  get currentActionName() {
+    return this._currentAction && this._currentAction.name;
+  }
+
   /**
    * @constructor
    */
@@ -41,6 +45,11 @@ module.exports = class Utsuroi extends EventEmitter {
   to(actionName, duration) {
     let oldAction = this._currentAction;
     let newAction = this._findAction(actionName);
+
+    this.emit('changeStart', {
+      from: oldAction && oldAction.name,
+      to: newAction.name
+    });
 
     newAction.reset();
     newAction.play();
