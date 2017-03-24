@@ -55,6 +55,12 @@ module.exports = class Utsuroi extends EventEmitter {
         }
         newAction.weight = this.weight;
       })
+      .onComplete(() => {
+        this.emit('changeComplete', {
+          from: oldAction && oldAction.name,
+          to: newAction.name
+        });
+      })
       .start();
     this._currentAction = newAction;
   }

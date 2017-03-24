@@ -41,6 +41,9 @@
       {name: "Fall"},
       {name: "Attack", duration: 70}
     ], "Rest Pose");
+    utsuroi.on('changeComplete', function(event) {
+      console.info('changeComplete:', event);
+    });
     utsuroi.play();
   }
 
@@ -59,7 +62,6 @@
     if(!target.dataset.action) {
       return;
     }
-
     utsuroi.to(target.dataset.action);
   }
 })();
