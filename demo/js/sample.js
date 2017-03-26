@@ -37,7 +37,7 @@
     utsuroi = new Utsuroi(mixer, [
       {name: "Rest Pose", loop: true},
       {name: "Walk", loop: true},
-      {name: "Jump", to: "Fall", duration: 100},
+      {name: "Jump", duration: 100},
       {name: "Fall"},
       {name: "Attack", duration: 70}
     ], "Rest Pose");
