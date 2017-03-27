@@ -21,7 +21,7 @@ module.exports = class Utsuroi extends EventEmitter {
   /**
    * @constructor
    */
-  constructor(mixer, actionConfigs) {
+  constructor(mixer, actionConfigs, defaultActionName) {
     super();
 
     this._mixer = mixer;
@@ -40,6 +40,10 @@ module.exports = class Utsuroi extends EventEmitter {
       let action = this._mixer.clipAction(actionData);
       return new Action(action, actionConfig);
     });
+
+    if(defaultActionName) {
+      this.to(defaultActionName, 1);
+    }
   }
 
   to(actionName, duration) {
