@@ -9,6 +9,9 @@ export default class Action {
   _dulation = 300;
   get duration() { return this._duration; }
 
+  _loopEnable = false;
+  get loopEnable() { return this._loopEnable; }
+
   /** motion weight */
   _weight = 0;
   get weight() { return this._weight; }
@@ -25,10 +28,11 @@ export default class Action {
   constructor(actionData, config) {
     this._name = config.name;
     this._duration = config.duration || 300;
+    this._loopEnable = !!config.loop;
     this._actionData = actionData;
     this._actionData.setEffectiveWeight(0);
 
-    if(!config.loop) {
+    if(this._loopEnable) {
       this._actionData.setLoop(THREE.LoopOnce, 0);
       this._actionData.clampWhenFinished = true;
     }
