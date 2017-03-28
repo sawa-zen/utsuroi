@@ -26,6 +26,7 @@ module.exports = class Utsuroi extends EventEmitter {
 
     this._mixer = mixer;
     this._root = mixer.getRoot();
+    this._defaultActionName = defaultActionName;
 
     this._actions = _.map(actionConfigs, (actionConfig) => {
       let name = actionConfig.name;
@@ -41,8 +42,8 @@ module.exports = class Utsuroi extends EventEmitter {
       return new Action(action, actionConfig);
     });
 
-    if(defaultActionName) {
-      this.to(defaultActionName, 1);
+    if(this._defaultActionName) {
+      this.to(this._defaultActionName, 1);
     }
   }
 
