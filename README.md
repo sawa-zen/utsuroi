@@ -20,7 +20,7 @@ $ npm install utsuroi
 
 #### How to create
 
-```JavaScript
+```javascript
 var utsuroi;
 
 // Load asset
@@ -58,7 +58,7 @@ loader.load('assets/model.json', (geometry, materials) {
 
 #### How to update animation
 
-```JavaScript
+```javascript
 var clock = new THREE.Clock();
 
 function tick() {
@@ -74,6 +74,6 @@ tick();
 
 #### How to change action
 
-```JavaScript
+```javascript
 utsuroi.to('Walk');
 ```
