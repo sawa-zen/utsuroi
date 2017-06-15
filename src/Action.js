@@ -32,7 +32,7 @@ export default class Action {
     this._actionData = actionData;
     this._actionData.setEffectiveWeight(0);
 
-    if(this._loopEnable) {
+    if(!this._loopEnable) {
       this._actionData.setLoop(THREE.LoopOnce, 0);
       this._actionData.clampWhenFinished = true;
     }
