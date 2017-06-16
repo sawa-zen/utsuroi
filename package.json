@@ -1,6 +1,6 @@
 {
   "name": "utsuroi",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "This is a plug-in for easy switching animation of 3D models of Three.js.",
   "main": "build/utsuroi.js",
   "scripts": {

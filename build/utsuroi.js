@@ -6,19 +6,17 @@
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: sawa-zen
  *   homepage: https://github.com/sawa-zen/three-animation-switcher#readme
- *   version: 0.1.5
+ *   version: 0.1.6
  *
  * eventemitter3:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Arnout Kazemier
- *   maintainers: v1 <npm@3rd-Eden.com>, 3rdeden <npm@3rd-Eden.com>, lpinca <luigipinca@gmail.com>
  *   homepage: https://github.com/primus/eventemitter3#readme
- *   version: 2.0.2
+ *   version: 2.0.3
  *
  * lodash:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: John-David Dalton <john.david.dalton@gmail.com>
- *   maintainers: jdalton <john.david.dalton@gmail.com>, mathias <mathias@qiwi.be>
  *   contributors: John-David Dalton <john.david.dalton@gmail.com>, Mathias Bynens <mathias@qiwi.be>
  *   homepage: https://lodash.com/
  *   version: 4.17.4
@@ -26,14 +24,12 @@
  * process:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Roman Shtylman <shtylman@gmail.com>
- *   maintainers: coolaj86 <coolaj86@gmail.com>, cwmma <calvin.metcalf@gmail.com>, defunctzombie <shtylman@gmail.com>
  *   homepage: https://github.com/shtylman/node-process#readme
- *   version: 0.11.9
+ *   version: 0.11.10
  *
  * tween.js:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: tween.js contributors
- *   maintainers: sole <listas@soledadpenades.com>
  *   homepage: https://github.com/tweenjs/tween.js
  *   version: 16.6.0
  *
@@ -17611,6 +17607,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
