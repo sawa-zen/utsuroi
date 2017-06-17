@@ -1,0 +1,12 @@
+box: node:8.1.1
+build:
+  steps:
+    - npm-install
+    - script:
+        name: build
+        code: npm run build:production
+  after-steps:
+    - slack-notifier:
+      url: $SLACK_URL
+      channel: test
+      username: werckerbot
