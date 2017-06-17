@@ -1,8 +1,10 @@
 # Utsuroi
 
-This is a plug-in for easy switching animation of blender models in Three.js.
-
 ![](./readme.gif)
+
+[![wercker status](https://app.wercker.com/status/22d9500fb5efafae42d17c197a35d120/s/master "wercker status")](https://app.wercker.com/project/byKey/22d9500fb5efafae42d17c197a35d120)
+
+This is a plug-in for easy switching animation of blender models in Three.js.
 
 ### Setup
 
