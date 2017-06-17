@@ -6,7 +6,7 @@
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: sawa-zen
  *   homepage: https://github.com/sawa-zen/three-animation-switcher#readme
- *   version: 0.1.8
+ *   version: 0.1.9
  *
  * eventemitter3:
  *   license: MIT (http://opensource.org/licenses/MIT)
