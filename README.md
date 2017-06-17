@@ -6,6 +6,10 @@
 
 This is a plug-in for easy switching animation of blender models in Three.js.
 
+### Demo
+
+- [http://utsuroi.sawa-zen.com/demo/](http://utsuroi.sawa-zen.com/demo/)
+
 ### Setup
 
 #### NPM Install
