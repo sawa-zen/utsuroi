@@ -2,6 +2,8 @@
 
 This is a plug-in for easy switching animation of blender models in Three.js.
 
+![](./readme.gif)
+
 ### Setup
 
 #### NPM Install
