@@ -2,7 +2,7 @@
 
 ![](./readme.gif)
 
-[![wercker status](https://app.wercker.com/status/22d9500fb5efafae42d17c197a35d120/s/master "wercker status")](https://app.wercker.com/project/byKey/22d9500fb5efafae42d17c197a35d120)
+[![wercker status](https://app.wercker.com/status/22d9500fb5efafae42d17c197a35d120/s/master "wercker status")](https://app.wercker.com/project/byKey/22d9500fb5efafae42d17c197a35d120) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 This is a plug-in for easy switching animation of blender models in Three.js.
 
