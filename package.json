@@ -1,13 +1,13 @@
 {
   "name": "utsuroi",
-  "version": "0.1.11",
+  "version": "0.1.13",
   "description": "This is a plug-in for easy switching animation of 3D models of Three.js.",
   "main": "build/utsuroi.js",
   "scripts": {
     "start": "npm run watch & npm run lite",
     "lite": "lite-server",
-    "build:production": "browserify src/Utsuroi.js --standalone Utsuroi -t babelify -p licensify --outfile build/utsuroi.js",
-    "build:develop": "browserify src/Utsuroi.js --standalone Utsuroi -t babelify -d -p licensify --outfile build/utsuroi.js",
+    "build:production": "browserify src/Utsuroi.js --standalone Utsuroi -t babelify -p licensify | derequire > build/utsuroi.js",
+    "build:develop": "browserify src/Utsuroi.js --standalone Utsuroi -t babelify -d -p licensify | derequire > build/utsuroi.js",
     "minify": "uglifyjs build/utsuroi.js --mangle --compress --comments --output build/utsuroi.min.js",
     "watch": "watch 'npm run build:develop' src/ --ignoreDotFiles --interval=1",
     "versionup": "versionup -p './' -l 'micro' -a '1'",
@@ -41,5 +41,8 @@
     "uglify-js": "^2.8.29",
     "versionup": "^2.1.2",
     "watch": "^0.17.1"
+  },
+  "dependencies": {
+    "derequire": "^2.0.6"
   }
 }
