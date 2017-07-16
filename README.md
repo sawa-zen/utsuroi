@@ -40,11 +40,8 @@ loader.load('assets/model.json', (geometry, materials) {
     m.skinning = true;
   });
 
-  // Material
-  var material = new THREE.MultiMaterial(materials);
-
   // Mesh
-  var actor = new THREE.SkinnedMesh(geometry, material);
+  var actor = new THREE.SkinnedMesh(geometry, materials);
   scene.add(actor);
 
   // AnimationMixer

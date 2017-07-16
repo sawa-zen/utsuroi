@@ -29,8 +29,7 @@
     materials.forEach(function(m) {
       m.skinning = true;
     });
-    var material = new THREE.MultiMaterial(materials);
-    var actor = new THREE.SkinnedMesh(geometry, material);
+    var actor = new THREE.SkinnedMesh(geometry, materials);
     scene.add(actor);
 
     var mixer = new THREE.AnimationMixer(actor);
