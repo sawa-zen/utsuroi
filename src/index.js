@@ -1,4 +1,3 @@
-import {_} from 'lodash';
 import TWEEN from 'tween.js';
 import EventEmitter from 'eventemitter3';
 import Action from './Action';
@@ -6,7 +5,7 @@ import Action from './Action';
 /**
  * Utsuroi
  */
-module.exports = class Utsuroi extends EventEmitter {
+export default class Utsuroi extends EventEmitter {
 
   _mixer = null;
   _root = null;
@@ -28,9 +27,10 @@ module.exports = class Utsuroi extends EventEmitter {
     this._root = mixer.getRoot();
     this._defaultActionName = defaultActionName;
 
-    this._actions = _.map(actionConfigs, (actionConfig) => {
+    this._actions = Object.keys(actionConfigs).map((key) => {
+      let actionConfig = actionConfigs[key];
       let name = actionConfig.name;
-      let actionData = _.find(this._root.geometry.animations, (animation) => {
+      let actionData = this._root.geometry.animations.find((animation) => {
         return animation.name == name;
       });
 
@@ -94,7 +94,7 @@ module.exports = class Utsuroi extends EventEmitter {
   }
 
   _findAction(name) {
-    return _.find(this._actions, (action) => {
+    return this._actions.find((action) => {
       return action.name === name;
     });
   }

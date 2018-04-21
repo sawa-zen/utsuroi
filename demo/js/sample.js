@@ -1,6 +1,7 @@
 'use strict';
 
 (function() {
+  console.info(Utsuroi);
 
   var utsuroi;
   var buttonList = document.getElementById('buttonList');

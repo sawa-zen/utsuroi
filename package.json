@@ -2,16 +2,11 @@
   "name": "utsuroi",
   "version": "0.1.14",
   "description": "This is a plug-in for easy switching animation of 3D models of Three.js.",
-  "main": "build/utsuroi.js",
+  "main": "dist/utsuroi.js",
   "scripts": {
-    "start": "npm run watch & npm run lite",
-    "lite": "lite-server",
-    "build:production": "browserify src/Utsuroi.js --standalone Utsuroi -t babelify -p licensify | derequire > build/utsuroi.js",
-    "build:develop": "browserify src/Utsuroi.js --standalone Utsuroi -t babelify -d -p licensify | derequire > build/utsuroi.js",
-    "minify": "uglifyjs build/utsuroi.js --mangle --compress --comments --output build/utsuroi.min.js",
-    "watch": "watch 'npm run build:develop' src/ --ignoreDotFiles --interval=1",
-    "versionup": "versionup -p './' -l 'micro' -a '1'",
-    "release": "npm run build:production && npm run minify && npm run versionup && npm publish"
+    "build": "rollup -c --environment BUILD:production",
+    "watch": "rollup -c -w",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,19 +23,19 @@
   ],
   "homepage": "https://github.com/sawa-zen/three-animation-switcher#readme",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
+    "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^7.3.0",
-    "browserify": "^13.3.0",
-    "derequire": "^2.0.6",
-    "eventemitter3": "^2.0.3",
-    "licensify": "^3.1.3",
-    "lite-server": "^2.3.0",
-    "lodash": "^4.17.4",
-    "tween.js": "^16.6.0",
-    "uglify-js": "^2.8.29",
-    "versionup": "^2.1.2",
-    "watch": "^0.17.1"
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babelrc-rollup": "^3.0.0",
+    "rollup": "^0.58.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "eventemitter3": "^3.0.1",
+    "tween.js": "^16.6.0"
   }
 }
