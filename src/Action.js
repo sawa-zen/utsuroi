@@ -6,12 +6,6 @@ export default class Action {
   _name = null;
   get name() { return this._name; }
 
-  _dulation = 300;
-  get duration() { return this._duration; }
-
-  _loopEnable = false;
-  get loopEnable() { return this._loopEnable; }
-
   /** motion weight */
   _weight = 0;
   get weight() { return this._weight; }
@@ -25,17 +19,10 @@ export default class Action {
   /**
    * @constructor
    */
-  constructor(actionData, config) {
-    this._name = config.name;
-    this._duration = config.duration || 300;
-    this._loopEnable = !!config.loop;
+  constructor(actionData) {
+    this._name = actionData.getClip().name;
     this._actionData = actionData;
     this._actionData.setEffectiveWeight(0);
-
-    if(!this._loopEnable) {
-      this._actionData.setLoop(2200, 0);
-      this._actionData.clampWhenFinished = true;
-    }
   }
 
   play() {

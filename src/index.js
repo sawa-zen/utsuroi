@@ -1,3 +1,4 @@
+import THREE from 'three';
 import TWEEN from 'tween.js';
 import EventEmitter from 'eventemitter3';
 import Action from './Action';
@@ -7,6 +8,7 @@ import Action from './Action';
  */
 export default class Utsuroi extends EventEmitter {
 
+  _clock = null;
   _mixer = null;
   _root = null;
   _animationEnabled = false;
@@ -20,26 +22,17 @@ export default class Utsuroi extends EventEmitter {
   /**
    * @constructor
    */
-  constructor(mixer, actionConfigs, defaultActionName) {
+  constructor(actor, defaultActionName) {
     super();
 
-    this._mixer = mixer;
-    this._root = mixer.getRoot();
+    this._clock = new THREE.Clock();
+    this._mixer = new THREE.AnimationMixer(actor);
+    this._root = this._mixer.getRoot();
     this._defaultActionName = defaultActionName;
 
-    this._actions = Object.keys(actionConfigs).map((key) => {
-      let actionConfig = actionConfigs[key];
-      let name = actionConfig.name;
-      let actionData = this._root.geometry.animations.find((animation) => {
-        return animation.name == name;
-      });
-
-      if(!actionData) {
-        return console.error(`${name} is not found.`);
-      }
-
+    this._actions = this._root.geometry.animations.map((actionData) => {
       let action = this._mixer.clipAction(actionData);
-      return new Action(action, actionConfig);
+      return new Action(action);
     });
 
     if(this._defaultActionName) {
@@ -59,10 +52,9 @@ export default class Utsuroi extends EventEmitter {
     newAction.reset();
     newAction.play();
 
-    duration = duration || newAction.duration;
     let param = { weight: 0 };
     let tween = new TWEEN.Tween(param)
-      .to({ weight: 1 }, duration)
+      .to({ weight: 1 }, duration || 200)
       .onUpdate(function() {
         if(oldAction) {
           oldAction.weight = 1 - this.weight;
@@ -87,8 +79,9 @@ export default class Utsuroi extends EventEmitter {
     this._animationEnabled = true;
   }
 
-  update(delta) {
+  update() {
     if(!this._animationEnabled) return;
+    let delta = this._clock.getDelta();
     this._mixer.update(delta);
     TWEEN.update();
   }

@@ -1,6 +1,6 @@
 {
   "name": "utsuroi",
-  "version": "0.1.14",
+  "version": "0.2.0",
   "description": "This is a plug-in for easy switching animation of 3D models of Three.js.",
   "main": "dist/utsuroi.js",
   "scripts": {
@@ -22,17 +22,21 @@
     "AnimationMixer"
   ],
   "homepage": "https://github.com/sawa-zen/three-animation-switcher#readme",
+  "peerDependencies": {
+    "three": "^0.92.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "babelrc-rollup": "^3.0.0",
     "rollup": "^0.58.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-uglify": "^3.0.0"
+    "rollup-plugin-uglify": "^3.0.0",
+    "three": "^0.92.0"
   },
   "dependencies": {
     "eventemitter3": "^3.0.1",
