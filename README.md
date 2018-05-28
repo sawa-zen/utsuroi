@@ -6,10 +6,6 @@
 
 This is a plug-in for easy switching animation of blender models in Three.js.
 
-### Demo
-
-- [http://utsuroi.sawa-zen.com/demo/](http://utsuroi.sawa-zen.com/demo/)
-
 ### Setup
 
 #### NPM Install
@@ -26,7 +22,14 @@ $ npm install utsuroi
 
 ### Basic Usage Example
 
+First, export model data with animation attached with A with json.
+You will use the name you set at this time later :)
+
+<img src="./actions.png" alt="blender setting" width="300" height="300">
+
 #### How to create
+
+Let's create an utsuroi object using the loaded model data.
 
 ```javascript
 var utsuroi;
@@ -36,25 +39,15 @@ var loader = new THREE.JSONLoader();
 loader.load('assets/model.json', (geometry, materials) {
 
   // Allow "skining" for all materials.
-  materials.forEach(function(m) {
-    m.skinning = true;
-  });
+  materials.forEach(function(material) { material.skinning = true; });
 
   // Mesh
   var actor = new THREE.SkinnedMesh(geometry, materials);
   scene.add(actor);
 
-  // AnimationMixer
-  var mixer = new THREE.AnimationMixer(actor);
-
   // Create Utsuroi
-  utsuroi = new Utsuroi(mixer, [
-    {name: "Rest Pose", loop: true},
-    {name: "Walk", loop: true},
-    {name: "Jump", duration: 100},
-    {name: "Fall"},
-    {name: "Attack", duration: 70}
-  ], "Rest Pose");
+  // new Utsuroi(SkinnedMesh, defaultActionName)
+  utsuroi = new Utsuroi(actor, 'Rest Pose');
 
   // start motion
   utsuroi.play();
@@ -63,14 +56,13 @@ loader.load('assets/model.json', (geometry, materials) {
 
 #### How to update animation
 
-```javascript
-var clock = new THREE.Clock();
+Execute the `update` method every frame.
 
+```javascript
 function tick() {
   requestAnimationFrame(tick);
   if(utsuroi) {
-    var delta = clock.getDelta();
-    utsuroi.update(delta);
+    utsuroi.update();
   }
 }
 
@@ -79,6 +71,14 @@ tick();
 
 #### How to change action
 
+If you want to change the action, simply pass the action name to the `to` method and execute it :)
+
 ```javascript
 utsuroi.to('Walk');
+```
+
+#### How to pause animation
+
+```
+utsuroi.pause();
 ```

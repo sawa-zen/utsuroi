@@ -3,3 +3,5 @@ src/
 .babelrc
 .eslintrc
 wercker.yml
+action.png
+readme.gif

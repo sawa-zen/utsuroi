@@ -35,6 +35,9 @@
     renderer.render(scene, camera);
   }
 
+  var buttonList = document.getElementById('buttonList');
+  buttonList.addEventListener('click', onClickButtons);
+
   function onClickButtons(event) {
     var target = event.target;
     utsuroi.to(target.dataset.action);
