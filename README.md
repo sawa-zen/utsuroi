@@ -46,11 +46,12 @@ loader.load('assets/model.json', (geometry, materials) {
   scene.add(actor);
 
   // Create Utsuroi
-  // new Utsuroi(SkinnedMesh, defaultActionName)
-  utsuroi = new Utsuroi(actor, 'Rest Pose');
+  // new Utsuroi(SkinnedMesh)
+  utsuroi = new Utsuroi(actor);
 
   // start motion
-  utsuroi.play();
+  // utsuroi.play(actionName, loop)
+  utsuroi.play('Rest Pose', true);
 });
 ```
 
@@ -80,6 +81,6 @@ utsuroi.to('Walk', true, 300);
 
 #### How to pause animation
 
-```
+```javascript
 utsuroi.pause();
 ```

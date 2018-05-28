@@ -22,22 +22,17 @@ export default class Utsuroi extends EventEmitter {
   /**
    * @constructor
    */
-  constructor(actor, defaultActionName) {
+  constructor(actor) {
     super();
 
     this._clock = new THREE.Clock();
     this._mixer = new THREE.AnimationMixer(actor);
     this._root = this._mixer.getRoot();
-    this._defaultActionName = defaultActionName;
 
     this._actions = this._root.geometry.animations.map((actionData) => {
       let action = this._mixer.clipAction(actionData);
       return new Action(action);
     });
-
-    if(this._defaultActionName) {
-      this.to(this._defaultActionName, 1);
-    }
   }
 
   to(actionName, loop = false, duration) {
@@ -73,8 +68,12 @@ export default class Utsuroi extends EventEmitter {
     this._currentAction = newAction;
   }
 
-  play() {
+  play(actionName, loop = false) {
     this._animationEnabled = true;
+
+    if(actionName) {
+      this.to(actionName, loop);
+    }
   }
 
   pause() {

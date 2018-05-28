@@ -24,8 +24,8 @@
     materials.forEach(function(m) { m.skinning = true; });
     var actor = new THREE.SkinnedMesh(geometry, materials);
     scene.add(actor);
-    utsuroi = new Utsuroi(actor, 'Rest Pose');
-    utsuroi.play();
+    utsuroi = new Utsuroi(actor);
+    utsuroi.play('Rest Pose', true);
   }
 
   tick();
@@ -40,6 +40,6 @@
 
   function onClickButtons(event) {
     var target = event.target;
-    utsuroi.to(target.dataset.action, !!target.dataset.loop);
+    utsuroi.to(target.dataset.action, !!target.dataset.loop, 200);
   }
 })();
