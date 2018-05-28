@@ -40,7 +40,7 @@ export default class Utsuroi extends EventEmitter {
     }
   }
 
-  to(actionName, duration) {
+  to(actionName, loop = false, duration) {
     let oldAction = this._currentAction;
     let newAction = this._findAction(actionName);
 
@@ -48,6 +48,8 @@ export default class Utsuroi extends EventEmitter {
       from: oldAction && oldAction.name,
       to: newAction.name
     });
+
+    newAction.loop = loop;
 
     newAction.reset();
     newAction.play();

@@ -40,6 +40,6 @@
 
   function onClickButtons(event) {
     var target = event.target;
-    utsuroi.to(target.dataset.action);
+    utsuroi.to(target.dataset.action, !!target.dataset.loop);
   }
 })();

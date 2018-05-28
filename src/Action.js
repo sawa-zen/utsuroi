@@ -1,3 +1,5 @@
+import THREE from 'three';
+
 export default class Action {
 
   _actionData = null;
@@ -14,6 +16,12 @@ export default class Action {
     if (1 < val) val = 1;
     this._weight = val;
     this._actionData.setEffectiveWeight(val);
+  }
+
+  _loop = THREE.LoopOnce;
+  set loop(val) {
+    this._loop = val;
+    this._actionData.loop = this._loop ? THREE.LoopRepeat : THREE.LoopOnce;
   }
 
   /**
