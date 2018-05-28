@@ -71,10 +71,11 @@ tick();
 
 #### How to change action
 
-If you want to change the action, simply pass the action name to the `to` method and execute it :)
+If you want to change the action, simply pass the action name and duration (default: 200) to the `to` method and execute it :)
 
 ```javascript
-utsuroi.to('Walk');
+// to(ActionName[, Duration])
+utsuroi.to('Walk', 300);
 ```
 
 #### How to pause animation
