@@ -6,7 +6,6 @@ import { Action } from './action'
 export class Manipulator extends EventEmitter {
   private clock: THREE.Clock = new THREE.Clock()
   private mixer: THREE.AnimationMixer
-  private root: THREE.SkinnedMesh
   private animationEnabled = false
   private actions: Action[] = []
   private currentAction?: Action
@@ -20,7 +19,6 @@ export class Manipulator extends EventEmitter {
 
     this.clock = new THREE.Clock()
     this.mixer = new THREE.AnimationMixer(scene)
-    this.root = this.mixer.getRoot() as THREE.SkinnedMesh
 
     this.actions = animations.map((animationClip) => {
       let action = this.mixer.clipAction(animationClip)

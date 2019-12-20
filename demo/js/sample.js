@@ -19,13 +19,11 @@
   scene.add(ambientLight);
 
   var loader = new THREE.GLTFLoader();
-  loader.load('assets/zensuke.gltf', createActor);
-
-  function createActor(gltf) {
+  loader.load('assets/zensuke.gltf', (gltf) {
     scene.add(gltf.scene)
     manipulator = new Utsuroi.Manipulator(gltf.scene, gltf.animations);
     manipulator.play('Rest Pose', true);
-  }
+  })
 
   tick();
   function tick() {

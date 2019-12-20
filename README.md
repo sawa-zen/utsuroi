@@ -26,8 +26,7 @@ $ npm install utsuroi
 // esm
 import { Manipulator } from './manipulator'
 
-var utsuroi;
-
+let manipulator: Manipulator | undefined;
 // Load asset
 var loader = new THREE.GLTFLoader();
 loader.load('assets/model.gltf', (gltf) {
@@ -35,7 +34,7 @@ loader.load('assets/model.gltf', (gltf) {
   scene.add(gltf.scene)
 
   // Create Manipulator
-  // new Utsuroi.Manipulator(THREE.Scene, THREE.AnimationClip[])
+  // new Manipulator(THREE.Scene, THREE.AnimationClip[])
   manipulator = new Manipulator(gltf.scene, gltf.animations);
 
   // start motion
