@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es2015",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@tweenjs/tween.js": ["tweenjs__tweenjs.d.ts"]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "typeRoots": [
+      "node_modules/@types",
+      "typings"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}
