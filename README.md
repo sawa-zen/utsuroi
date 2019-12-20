@@ -23,6 +23,7 @@ $ npm install utsuroi
 ### Basic Usage Example
 
 ```javascript
+// esm
 import { Manipulator } from './manipulator'
 
 var utsuroi;
@@ -35,7 +36,7 @@ loader.load('assets/model.gltf', (gltf) {
 
   // Create Manipulator
   // new Utsuroi.Manipulator(THREE.Scene, THREE.AnimationClip[])
-  manipulator = new Utsuroi.Manipulator(gltf.scene, gltf.animations);
+  manipulator = new Manipulator(gltf.scene, gltf.animations);
 
   // start motion
   // manipulator.play(actionName, loop)
