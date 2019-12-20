@@ -9,7 +9,8 @@
   "scripts": {
     "build": "rollup -c",
     "build:types": "tsc --declaration --emitDeclarationOnly --out ./dist/utsuroi.d.ts",
-    "postbuild": "npm run build:types"
+    "postbuild": "npm run build:types",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",

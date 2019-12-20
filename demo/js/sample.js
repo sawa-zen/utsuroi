@@ -22,7 +22,6 @@
   loader.load('assets/zensuke.gltf', createActor);
 
   function createActor(gltf) {
-    console.info(gltf)
     scene.add(gltf.scene)
     manipulator = new Utsuroi.Manipulator(gltf.scene, gltf.animations);
     manipulator.play('Rest Pose', true);

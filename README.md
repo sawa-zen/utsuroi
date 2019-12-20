@@ -1,10 +1,10 @@
 # Utsuroi
 
-![](./readme.gif)
+The plugin makes it easy to control model animation when use Three.js :)
 
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
-This is a plug-in for easy switching animation of blender models in Three.js.
+![](./readme.gif)
 
 ### Setup
 
@@ -22,36 +22,24 @@ $ npm install utsuroi
 
 ### Basic Usage Example
 
-First, export model data with animation attached with A with json.
-You will use the name you set at this time later :)
-
-<img src="./actions.png" alt="blender setting" width="300" height="300">
-
-#### How to create
-
-Let's create an utsuroi object using the loaded model data.
-
 ```javascript
+import { Manipulator } from './manipulator'
+
 var utsuroi;
 
 // Load asset
-var loader = new THREE.JSONLoader();
-loader.load('assets/model.json', (geometry, materials) {
+var loader = new THREE.GLTFLoader();
+loader.load('assets/model.gltf', (gltf) {
+  // Add scene
+  scene.add(gltf.scene)
 
-  // Allow "skining" for all materials.
-  materials.forEach(function(material) { material.skinning = true; });
-
-  // Mesh
-  var actor = new THREE.SkinnedMesh(geometry, materials);
-  scene.add(actor);
-
-  // Create Utsuroi
-  // new Utsuroi(SkinnedMesh)
-  utsuroi = new Utsuroi(actor);
+  // Create Manipulator
+  // new Utsuroi.Manipulator(THREE.Scene, THREE.AnimationClip[])
+  manipulator = new Utsuroi.Manipulator(gltf.scene, gltf.animations);
 
   // start motion
-  // utsuroi.play(actionName, loop)
-  utsuroi.play('Rest Pose', true);
+  // manipulator.play(actionName, loop)
+  manipulator.play('Rest Pose', true);
 });
 ```
 
@@ -62,8 +50,8 @@ Execute the `update` method every frame.
 ```javascript
 function tick() {
   requestAnimationFrame(tick);
-  if(utsuroi) {
-    utsuroi.update();
+  if(manipulator) {
+    manipulator.update();
   }
 }
 
@@ -72,15 +60,15 @@ tick();
 
 #### How to change action
 
-If you want to change the action, simply pass the action name, loop and duration (default: 200) to the `to` method and execute it :)
+If you want to change the action, simply pass the action name, loop and duration to the `to` method and execute it :)
 
 ```javascript
-// to(ActionName[, loop ,duration])
-utsuroi.to('Walk', true, 300);
+// to(ActionName[, duration, loop])
+manipulator.to('Walk', 300, true);
 ```
 
 #### How to pause animation
 
 ```javascript
-utsuroi.pause();
+manipulator.pause();
 ```
